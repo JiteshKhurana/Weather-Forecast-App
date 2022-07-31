@@ -6,9 +6,21 @@ const apiKey = 'eb9b91e6c25fd6f1fe0744bb59316d8e';
 const openWeatherMapURL = 'https://api.openweathermap.org/data/2.5';
 
 class WeatherModel {
-  Future<dynamic> getCityWeather(String cityName) async {
+  Future<dynamic> getCoordinatesfromCityName(String cityName) async {
     NetworkHelper networkHelper = NetworkHelper(
-        '$openWeatherMapURL/weather?q=$cityName&appid=$apiKey&units=metric');
+        'http://api.openweathermap.org/geo/1.0/direct?q=$cityName&limit=1&appid=$apiKey');
+
+    var coordinatesData = await networkHelper.getData();
+    return coordinatesData;
+  }
+
+  Future<dynamic> getCityWeather(String cityName) async {
+    var coordinatesData =
+        await WeatherModel().getCoordinatesfromCityName(cityName);
+    double latitude = coordinatesData[0]['lat'];
+    double longitude = coordinatesData[0]['lon'];
+    NetworkHelper networkHelper = NetworkHelper(
+        '$openWeatherMapURL/onecall?lat=$latitude&lon=$longitude&exclude=minutely&appid=$apiKey&units=metric');
 
     var weatherData = await networkHelper.getData();
 
@@ -27,20 +39,34 @@ class WeatherModel {
     return weatherData;
   }
 
-  Future<dynamic> getCurrentCityNameFromCoordinates() async {
+  Future<String> getCurrentCityNameFromCoordinates() async {
     Location location = Location();
     await location.getCurrentLocation();
 
     NetworkHelper networkHelper = NetworkHelper(
         '$openWeatherMapURL/weather?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey&units=metric');
 
-    var cityName = await networkHelper.getData();
+    dynamic cityNameData = await networkHelper.getData();
+    String cityName = cityNameData['name'];
+
     return cityName;
   }
 
   Future<dynamic> getAQICurrentLocation() async {
     NetworkHelper networkHelper = NetworkHelper(
         'https://api.waqi.info/feed/here/?token=18efe65c10b57597c3a29bcaf93ff42971fc6c78');
+    var aQI = await networkHelper.getData();
+
+    return aQI;
+  }
+
+  Future<dynamic> getAQIofCity(String cityName) async {
+    var coordinatesData =
+        await WeatherModel().getCoordinatesfromCityName(cityName);
+    double latitude = coordinatesData[0]['lat'];
+    double longitude = coordinatesData[0]['lon'];
+    NetworkHelper networkHelper = NetworkHelper(
+        'https://api.waqi.info/feed/geo:$latitude;$longitude/?token=18efe65c10b57597c3a29bcaf93ff42971fc6c78');
     var aQI = await networkHelper.getData();
 
     return aQI;

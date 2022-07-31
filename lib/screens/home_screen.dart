@@ -35,7 +35,7 @@ class HomeScreen extends StatefulWidget {
       {Key? key,
       required this.locationWeather,
       required this.aQI,
-      this.cityName})
+      required this.cityName})
       : super(key: key);
   final dynamic locationWeather;
   final dynamic aQI;
@@ -49,7 +49,6 @@ class _HomeScreenState extends State<HomeScreen> {
   WeatherModel weather = WeatherModel();
   late int temperature;
   late Widget weatherIcon;
-  late String cityName;
   late double windSpeed;
   late String description;
   late int humidity;
@@ -149,24 +148,23 @@ class _HomeScreenState extends State<HomeScreen> {
   void updateUI(dynamic weatherData, dynamic aQI, dynamic cityNameData) {
     setState(
       () {
-        if (weatherData == null) {
-          temperature = 0;
-          description = '';
-          humidity = 0;
-          windSpeed = 0;
-          feelsLike = 0;
-          dewPoint = 0;
-          clouds = 0;
-          pressure = 0;
-          visibility = 0;
-          aqi = 0;
-          return;
-        }
-        double temp = weatherData['current']['temp'];
+        // if (weatherData == null) {
+        //   temperature = 0;
+        //   description = '';
+        //   humidity = 0;
+        //   windSpeed = 0;
+        //   feelsLike = 0;
+        //   dewPoint = 0;
+        //   clouds = 0;
+        //   pressure = 0;
+        //   visibility = 0;
+        //   aqi = 0;
+        //   return;
+        // }
+        dynamic temp = weatherData['current']['temp'];
         temperature = temp.toInt();
         var condition = weatherData['current']['weather'][0]['id'];
         weatherIcon = weather.getWeatherIcon(condition, 200);
-        cityName = cityNameData['name'];
         description = weatherData['current']['weather'][0]['description'];
         humidity = weatherData['current']['humidity'];
         windSpeed = weatherData['current']['wind_speed'];
@@ -266,7 +264,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return const SearchScreen();
+                              return SearchScreen();
                             },
                           ),
                         );
@@ -291,7 +289,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       size: 25,
                     ),
                     Text(
-                      cityName,
+                      widget.cityName,
                       style: kTitle,
                     ),
                   ],
@@ -563,7 +561,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         nO2: nO2,
                         o3: o3,
                         cO: cO,
-                        cityName: cityName);
+                        cityName: widget.cityName);
                   }));
                 },
                 child: ReusableCard(

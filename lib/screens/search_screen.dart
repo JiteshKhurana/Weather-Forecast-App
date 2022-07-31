@@ -4,17 +4,16 @@ import 'package:weather_app/services/weather.dart';
 import 'package:weather_app/utilities/constants.dart';
 
 class SearchScreen extends StatefulWidget {
-  const SearchScreen({Key? key, this.locationWeather}) : super(key: key);
-  final dynamic locationWeather;
   @override
   State<SearchScreen> createState() => _SearchScreenState();
 }
 
 class _SearchScreenState extends State<SearchScreen> {
   late String cityName;
-  goToHomeScreen(String cityName) async {
+
+  void goToHomeScreen(String cityName) async {
     var weatherData = await WeatherModel().getCityWeather(cityName);
-    var aQI = await WeatherModel().getAQICurrentLocation();
+    var aQI = await WeatherModel().getAQIofCity(cityName);
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -22,6 +21,7 @@ class _SearchScreenState extends State<SearchScreen> {
           return HomeScreen(
             locationWeather: weatherData,
             aQI: aQI,
+            cityName: cityName,
           );
         },
       ),
