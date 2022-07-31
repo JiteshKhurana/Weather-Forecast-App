@@ -10,11 +10,17 @@ Key features of the My Weather app:
 
 • Accurate weather forecast for next 7 days
 •Add and track the weather report of multiple locations around the world.
+
 • Useful information: weather, temperature, humidity, dew point, feels like and wind speed
+
 • Local air quality forecasts (AQI)
+
 • UV index
+
 • Sunrise and Sunset
+
 • Hourly forecast for 24 hours with pop
+
 
 🌞 Weather App
 
