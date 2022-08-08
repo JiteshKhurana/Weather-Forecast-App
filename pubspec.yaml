@@ -17,6 +17,8 @@ dependencies:
   http: ^0.13.4
   intl: ^0.17.0
   simple_gradient_text: ^1.2.3
+  csc_picker: ^0.2.6
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

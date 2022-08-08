@@ -9,7 +9,7 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  late String cityName;
+  late String? cityName;
 
   void goToHomeScreen(String cityName) async {
     var weatherData = await WeatherModel().getCityWeather(cityName);
@@ -78,7 +78,7 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
               child: TextButton(
                 onPressed: () {
-                  goToHomeScreen(cityName);
+                  goToHomeScreen(cityName!);
                 },
                 child: Image.asset(
                   'icons/check-mark.png',
@@ -93,7 +93,3 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 }
-
-// if (typedName != null) {
-// var weatherData = await weather.getCityWeather(typedName);
-// updateUI(weatherData);

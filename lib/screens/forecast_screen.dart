@@ -74,7 +74,7 @@ class _ForecastScreenState extends State<ForecastScreen> {
       () {
         if (weatherData == null) {
           temperature = 0;
-
+          cityName = '';
           return;
         }
         double temp = weatherData['current']['temp'];

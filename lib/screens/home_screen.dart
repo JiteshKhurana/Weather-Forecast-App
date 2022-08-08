@@ -186,11 +186,11 @@ class _HomeScreenState extends State<HomeScreen> {
         uV = uv.toInt();
         aqi = aQI['data']['aqi'];
         descriptionAirQuality = weather.getAirQualityDescription(aqi);
-        pM2_5 = aQI['data']['iaqi']['pm25']['v'];
-        sO2 = aQI['data']['iaqi']['so2']['v'];
-        nO2 = aQI['data']['iaqi']['no2']['v'];
-        o3 = aQI['data']['iaqi']['o3']['v'];
-        cO = aQI['data']['iaqi']['co']['v'];
+        // pM2_5 = aQI['data']['iaqi']['pm25']['v'];
+        // sO2 = aQI['data']['iaqi']['so2']['v'];
+        // nO2 = aQI['data']['iaqi']['no2']['v'];
+        // o3 = aQI['data']['iaqi']['o3']['v'];
+        // cO = aQI['data']['iaqi']['co']['v'];
       },
     );
   }

@@ -63,8 +63,8 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
                           'icons/22.png',
                           height: 60,
                         ),
-                        SizedBox(width: 15),
-                        Text(
+                        const SizedBox(width: 15),
+                        const Text(
                           '34 C',
                           style: TextStyle(fontSize: 60, color: Colors.white),
                         )
@@ -122,13 +122,13 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
                     kVerticalSpace(10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Icon(
+                      children: const [
+                         Icon(
                           Icons.wb_sunny_outlined,
                           color: Colors.white,
                           size: 30,
                         ),
-                        Icon(
+                         Icon(
                           Icons.dark_mode_outlined,
                           color: Colors.white,
                           size: 30,
@@ -142,7 +142,7 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
                         children: [
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
+                            children: const [
                               Text(
                                 'Rise',
                                 style: kForecastAirQuality,
@@ -154,7 +154,7 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
                             ],
                           ),
                           Column(
-                            children: [
+                            children: const [
                               Text(
                                 '05:36',
                                 style: kForecastAirQuality,
@@ -165,13 +165,13 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
                               ),
                             ],
                           ),
-                          VerticalDivider(
+                          const VerticalDivider(
                             thickness: 1,
                             color: Colors.white,
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
+                            children: const [
                               Text(
                                 'Rise',
                                 style: kForecastAirQuality,
@@ -183,7 +183,7 @@ class _DailyForecastScreenState extends State<DailyForecastScreen> {
                             ],
                           ),
                           Column(
-                            children: [
+                            children: const [
                               Text(
                                 '05:36',
                                 style: kForecastAirQuality,
